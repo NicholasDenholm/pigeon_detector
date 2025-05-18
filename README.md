@@ -16,10 +16,10 @@ A Raspberry Pi-based system that uses OpenCV and a COCO-trained object detection
          [ IR Sensor ]
                |
          [ Raspberry Pi ]
-         /      |       \
+         /              \
 [ Camera Module ]   [ Servo Motor ]
-         |
-[ OpenCV + COCO Model ]
-         |
-   Detects "bird" → Verifies Pigeon → Activates Servo
+         |                  ^
+[ OpenCV + COCO Model ]     |
+         |                  |
+Detects "bird" → Verifies Pigeon 
 ```

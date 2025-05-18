@@ -1,4 +1,4 @@
-# Pigeon Detector: A Raspberry Pi Object Detection tool using OpenCV, COCO, and Picamera2 
+# A Raspberry Pi object detection tool with OpenCV, COCO, and Picamera2 
 
 A Raspberry Pi-based system that uses OpenCV and a COCO-trained object detection model to identify pigeons in real-time. When motion is detected by an IR sensor, the camera is activated. If a pigeon is detected in the camera feed, a servo motor is triggered. This can be perfect for automated deterrent systems or research projects.
 

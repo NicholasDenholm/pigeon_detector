@@ -9,9 +9,9 @@ import subprocess
 
 # === Setup paths ===
 current_path = os.getcwd()
-class_file = os.path.join(current_path, "coco.names")
-config_file = os.path.join(current_path, "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt")
-weights_file = os.path.join(current_path, "frozen_inference_graph.pb")
+class_file = os.path.join(current_path, "models/coco.names")
+config_file = os.path.join(current_path, "models/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt")
+weights_file = os.path.join(current_path, "models/frozen_inference_graph.pb")
 
 
 classNames = []
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         # Pass image to object detection
         #img = cv2.resize(img, (400,400))
         #result_img, objectInfo = getObjects(img, 0.45, 0.2, objects=['bird']) 
-        result_img, objectInfo = getObjects(img, 0.50, 0.2, objects=['bird', 'person'])
+        result_img, objectInfo = getObjects(img, 0.20, 0.2, objects=['bird'])
         
         cv2.imshow("Output",result_img)
 

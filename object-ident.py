@@ -7,9 +7,10 @@ import time
 
 # === Setup paths ===
 current_path = os.getcwd()
-class_file = os.path.join(current_path, "coco.names")
-config_file = os.path.join(current_path, "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt")
-weights_file = os.path.join(current_path, "frozen_inference_graph.pb")
+#print(current_path)
+class_file = os.path.join(current_path, "models/coco.names")
+config_file = os.path.join(current_path, "models/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt")
+weights_file = os.path.join(current_path, "models/frozen_inference_graph.pb")
 
 
 classNames = []
@@ -25,7 +26,7 @@ net.setInputMean((127.5, 127.5, 127.5))
 net.setInputSwapRB(True)
 
 
-def getObjects(img, thres, nms, draw=False, objects=[]):
+def getObjects(img, thres, nms, draw=True, objects=[]):
     classIds, confs, bbox = net.detect(img,confThreshold=thres,nmsThreshold=nms)
     #print(classIds,bbox)
     if len(objects) == 0: objects = classNames
@@ -49,7 +50,7 @@ if __name__ == "__main__":
 
     # Picam code
     picam2 = Picamera2()
-    picam2.preview_configuration.main.size = (1000,1000)
+    picam2.preview_configuration.main.size = (600,600) #width, height
     picam2.preview_configuration.main.format = "RGB888"
 
     #picam2.preview_configuration.main.format = "RGB565"
@@ -72,7 +73,8 @@ if __name__ == "__main__":
         
         # Picam code
         img = picam2.capture_array()
-        result_img, objectInfo = getObjects(img,0.10,0.2, objects=['bird']) 
+        result_img, objectInfo = getObjects(img, 0.50, 0.2, objects=['bird', 'person']) 
+
         #result_img, objectInfo = getObjects(img,0.45,0.2, objects=['bird', 'person']) 
         #result_img, objectInfo = getObjects(img,0.45,0.2)
 
